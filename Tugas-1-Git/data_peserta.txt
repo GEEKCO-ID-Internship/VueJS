@@ -1,0 +1,5 @@
+Data Peserta Sanbercode Bootcamp Vue JS 
+1. Nama: Risang Ganie Salam
+2. Email: risanggani@gmail.com
+3. Akun Gitlab: @risangdevs
+4. Akun Telegram: @risanggani
