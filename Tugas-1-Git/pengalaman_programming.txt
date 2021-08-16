@@ -1,0 +1,6 @@
+Pengalaman programming:
+1. Bahasa C++ di Pengantar Teknologi Informasi B saat TPB
+2. Latihan menggunakan HTML
+3. Latihan menggunakan CSS
+4. Latihan menggunakan Javascript
+5. Latihan menggunakan framework VueJS
