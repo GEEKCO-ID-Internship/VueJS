@@ -1,0 +1,272 @@
+<!doctype>
+<html>
+    <head>
+        <title> Biodata Diri </title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+    <div class="nav-bar"></div>
+    <div class="row">
+       
+        <div class="column">
+        <img src="pasfoto.jpg" alt="Pas Foto" >
+        <div class="table">
+        <table>
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Nama
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Risang Ganie Salam
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Tempat, Tanggal Lahir
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Bandung, 12 September 1991
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Jenis Kelamin
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Laki-laki
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Pendidikan Sarjana
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Teknik Metalurgi ITB
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Pendidikan SMA
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        SMAN 20 Bandung
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Pendidikan SMP
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        SMPN 14 Bandung
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Pendidikan SD
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        SDN Bina Harapan 1
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Nomor HP
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        0857 2245 2423
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Email
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        risanggani@gmail.com
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Domisili
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Kota Bandung, Jawa Barat
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Kontak Darurat
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        0856 5923 3469 (Ella)
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Skill
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        HTML, CSS, Java Script, VueJS
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Hobi
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Coding
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Status
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Kawin
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Agama
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        Islam
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Tinggi Badan
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        165 cm
+                    </td>  
+                </tr>
+                <tr>
+                    <td>
+                        Golongan Darah
+                    </td>
+                    <td>
+                        :
+                    </td>
+                    <td>
+                        O
+                    </td>  
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        
+    </div>
+   
+    <div class="column">
+        <br>
+        <div class="ask">
+            <h2>Silakan Bertanya!</h2>
+            </div>
+        <div class="form">
+        <form action="process.php" method="post">
+			<div>
+				<label> Nama Lengkap: </label>
+				<input type = "text" name= "firstName"
+				placeholder="Nama Lengkap Anda">
+			</div>
+		
+		<div>
+			<label> Nama Panggilan: </label>
+			<input type = "text" name= "lastName"
+			placeholder="Nama Panggilan Anda">
+		</div>
+		
+		<div>
+			<label> Email: </label>
+			<input type="email" name="email"
+			placeholder="Alamat Email Anda"
+			>
+		</div>
+		
+		<div>
+			<label> Gender: </label>
+			<select name="Jenis Kelamin">
+				<option value="male">Laki-laki</option>
+				<option value="female">Perempuan</option>
+			</select>
+		</div>
+		
+		<div>
+			<label> Usia: </label>
+			<input type="number" name="age"
+			value="30"> 
+		</div>
+		
+		<div>
+			<label> Tanggal Lahir: </label>
+			<input type="date" name="birthday"
+			>
+		</div>
+        
+		
+        <div>
+			<label> Pesan: </label>
+			<textarea name="message"></textarea>
+		</div>
+        <button>Submit</button>
+    
+	</form>
+    </div>
+    </div>
+    </div>
+    </body>
+
+</html>
