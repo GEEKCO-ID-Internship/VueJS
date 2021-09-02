@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tugas 9 & 10 Form Input Binding</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  
+  <div id="app">
+    <h2>Daftar Buku:</h2>
+    <input type="text" placeholder="Masukkan Kata Kunci" v-model="search" />
+    
+    <ul>
+        <li v-for="item in filteredList"> {{item}}
+        </li>
+    </ul>
+    
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        search: "",
+        books : [
+            'Kalkulus Dasar',
+            'Fisika Dasar',
+            'Aljabar Linier Elementer',
+            'Aljabar Abstrak',
+            'Algoritma Pemrograman'
+        ],
+      },
+      computed: {
+          filteredList(){
+        return this.books.filter(books => {
+        return books.toLowerCase().includes(this.search.toLowerCase())
+      })
+    }
+      }
+    })
+  </script>
+</body>
+
+</html>

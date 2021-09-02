@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Belajar Vue Router</h1>
+
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/categories">Categories</router-link>
+    <hr>
+    <router-view></router-view>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script type="module">
+    import { CategoriesComponent } from './CategoriesComponent.js'
+    import { CategoryComponent } from './CategoryComponent.js'
+  
+    //buat 2 component, home and about
+    const Home = {template: '<div>Ini Halaman Home</div>'}
+    const About = { template: '<div>Ini Halaman About</div>'}
+    let auth = true
+    let admin = true
+    //routing ke component yang diinginkan
+    const routes = [
+      {path: '/', component: Home, alias: '/home'},
+      {path:'/about', 
+        component: About, 
+        beforeEnter: (to, from, next) => {
+        if(!auth){
+          alert('Silakan Login Dahulu!')
+          next('/')
+        }
+        else{
+          alert('Berhasil Masuk')
+        }
+        next()
+      }
+      },
+      {path:'/categories', 
+        component: CategoriesComponent,
+        beforeEnter: (to, from, next) => {
+        if(!auth || !admin){
+          alert('Hubungi Administrator!')
+          next('/')
+        }
+        else{
+          alert('Selamat Datang, Admin!')
+        }
+        next()
+      }
+      
+      },
+      {path:'/category/:id', component: CategoryComponent },
+      {path: '*', redirect:'/'}
+      
+    ]
+
+    // kemudian kita instantiasi object Vue Router dan tambahkan routes yang telah dibuat
+    const router = new VueRouter({
+      routes
+    })
+
+    //kemudian kita tambahkan object VueRouter yang kita namakan router ke object Vue
+
+    var vm = new Vue({
+      el: '#app',
+      router,
+    })
+    </script>
+  
+</body>
+</html>

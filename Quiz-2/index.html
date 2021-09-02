@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quiz 2</title>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+  
+  <div id="app">
+    <h2>Daftar Nama:</h2>
+    <input type="text" placeholder="Masukkan Nama" v-model:value="newuser" />
+    <button @click="adduser">
+      Add
+    </button>
+    <ul>
+        <li v-for="item in users">
+        {{ item.name }} 
+        <button @click="edituser">Edit</button>
+        <button @click="deleteuser">Delete</button>
+        </li>
+    </ul>
+    
+  </div>
+
+  <script> 
+    var app = new Vue({
+      el: "#app",
+      data: {
+        
+        newuser: "",
+        users : [
+            {
+              'name': 'Muhammad Iqbal Mubarok'
+            },
+            {
+               'name': 'Ruby Purwanti'
+            },
+            {
+              'name' : 'Faqih Muhammad'
+            },
+        ],
+      },
+      methods: {
+          adduser: function(){
+              this.users.push({'name': this.newuser});
+              this.newuser = "";
+          },
+          edituser: function(){
+              editable=true
+               this.users = Object.assign({}, this.users);
+               
+          },
+          deleteuser(){
+            if(confirm('Anda yakin?'))
+              
+                this.users.splice(this.newuser,1,{'name':this.newuser});
+          }
+          
+          
+      }
+    })
+  </script>
+</body>
+
+</html>
