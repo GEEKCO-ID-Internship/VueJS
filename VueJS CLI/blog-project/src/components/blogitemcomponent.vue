@@ -3,7 +3,7 @@
     <v-card :to="'/blog/' + blog.id">
       <v-img
         :src="
-          blog.photo ? apiDomain + blog.photo : 'https://picsum.photo/200/300'
+          blog.photo ? apiDomain + blog.photo : 'https://picsum.photos/200/300'
         "
         class="white--text"
         height="200px"
@@ -22,13 +22,11 @@
   </v-flex>
 </template>
 
-<script> 
+<script>
 export default {
-    data : () =>
-    ({
-        apiDomain : "http://demo-api-vue.sanbercloud.com",
-
-    }),
-    props : ['blog']
-}
+  data: () => ({
+    apiDomain: "http://demo-api-vue.sanbercloud.com",
+  }),
+  props: ["blog"],
+};
 </script>
