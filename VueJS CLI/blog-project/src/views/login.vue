@@ -38,6 +38,35 @@
 <script>
 import { mapActions } from "vuex";
 export default {
+   namespaced: true,
+  state: {
+    status: false,
+    component: "",
+    params: {},
+  },
+  mutations: {
+    setStatus: (state, status) => {
+      state.status = status;
+    },
+    setComponent: (state, { component, params }) => {
+      state.component = component;
+      state.params = params;
+    },
+  },
+  actions: {
+    setStatus: ({ commit }, status) => {
+      commit("setStatus", status);
+    },
+    setComponent: ({ commit }, { component, params }) => {
+      commit("setComponent", { component, params });
+      commit("setStatus", true);
+    },
+  },
+  getters: {
+    status: (state) => state.status,
+    component: (state) => state.component,
+    params: (state) => state.params,
+  },
   data() {
     return {
       email: "",
@@ -49,7 +78,6 @@ export default {
   methods: {
     ...mapActions({
       setAlert: "alert/set",
-      setToken: "auth/setToken",
     }),
     close() {
       this.$emit("closed", false);
@@ -65,7 +93,7 @@ export default {
       };
       this.axios(config)
         .then((response) => {
-          this.setToken(response.data.access_token);
+          console.log(response.data);
           this.setAlert({
             status: true,
             color: "success",

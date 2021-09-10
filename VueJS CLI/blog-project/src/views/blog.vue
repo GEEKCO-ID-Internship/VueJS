@@ -32,13 +32,15 @@ export default {
   data: () => ({
     blog: {},
     apiDomain: "http://demo-api-vue.sanbercloud.com",
+   
   }),
   methods: {
     go() {
       let { id } = this.$route.params;
       const config = {
         method: "get",
-        url: `${this.apiDomain}/api/v2/blog/${id}`,
+        url: `http://demo-api-vue.sanbercloud.com/api/v2/blog/${id}`,
+        
       };
       this.axios(config)
         .then((response) => {

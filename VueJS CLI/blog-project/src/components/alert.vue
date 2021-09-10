@@ -2,7 +2,7 @@
   <v-snackbar
     v-model="alert"
     :color="color"
-    buttom
+    bottom
     multi-line
     outlined
     timeout="3000"
@@ -43,7 +43,7 @@ export default {
     close() {
       this.setAlert({
         status: false,
-      });
+      })
     },
   },
 };

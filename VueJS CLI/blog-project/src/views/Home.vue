@@ -13,14 +13,14 @@
       >
       </blog-item-component>
     </v-layout>
-    <button @click="increment(10)">Tambah</button>
-    {{ count }}
+    <!-- <button @click="increment(10)">Tambah</button>
+    {{ count }} -->
   </v-container>
 </template>
 
 <script>
 import blogitemcomponent from "../components/blogitemcomponent.vue";
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data: () => ({
     apiDomain: "http://demo-api-vue.sanbercloud.com",
@@ -33,9 +33,9 @@ export default {
     // count(){
     //   return this.$store.getters.count
     // }
-    ...mapGetters({
-      'count':'counter/count'
-    })
+    // ...mapGetters({
+    //   'count':'counter/count'
+    // })
   },
   methods: {
     go() {

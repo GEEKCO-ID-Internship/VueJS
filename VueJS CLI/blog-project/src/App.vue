@@ -2,41 +2,35 @@
   <!-- App.vue -->
 
   <v-app>
-    <alert/>
-    <!-- <v-snackbar
-      v-model="snackbarStatus"
-      color="success"
-      buttom
-      timeout="2000"
-      multi-line
-      outlined
-    >
-      {{ snackbarText }}
-
-      <template v-slot:action="{ attrs }">
-        <v-btn color="pink" text v-bind="attrs" @click="snackbarStatus = false">
-          Close
-        </v-btn>
-      </template></v-snackbar
-    > -->
+    <alert />
 
     <v-navigation-drawer app v-model="drawer">
       <v-list>
         <v-list-item v-if="!guest">
           <v-list-item-avatar>
-            <v-img src="https://randomuser.me/api/portraits/men/77.jpg">
+            <v-img
+              src="user.photo_profile ? apiDomain+user.photo_profile : 'https://randomuser.me/api/portraits/men/77.jpg'"
+            >
             </v-img>
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title>Risang Ganie Salam</v-list-item-title>
+            <v-list-item-title>{{ user.name }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
 
         <div class="pa-2" v-if="guest">
-          <v-btn block color="primary" class="mb-1" @click="login">
+          <v-btn
+            slot="activator"
+            block
+            color="primary"
+            class="mb-1"
+            @click="login"
+          >
             <v-icon left>mdi-lock</v-icon>
+
             Login
           </v-btn>
+          <!-- <router-link :to="{ name: 'Login' }"> Force Login </router-link> -->
           <v-btn block color="success">
             <v-icon left>mdi-account</v-icon>
             Register
@@ -94,42 +88,73 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import alert from './components/alert.vue';
+import { mapActions, mapGetters } from "vuex";
 // import components from './components/dialog.vue';
 
 export default {
-  components:{alert},
+  components: {
+    alert: () => import("./components/alert.vue"),
+    dialog: () => import("./components/dialog.vue"),
+  },
   name: "App",
 
   data: () => ({
-    drawer: false,
+    drawer: true,
+
     menus: [
       { title: "Home", icon: "mdi-home", route: "/" },
       { title: "Blogs", icon: "mdi-note", route: "/blogs" },
     ],
-    guest: true,
-    
+    apiDomain: "https://demo-api-vue.sanbercloud.com",
   }),
-  methods: {
-    logout() {
-      this.guest=true
-      this.setAlert({
-        status:true,
-        color:'success',
-        text:'Anda berhasil logout',
-      })
-    },
-    login() {
-      this.setDialogComponent({'component':'login'})
-    },
-    ...mapActions({
-      setAlert : 'alert/set',
-      setDialogComponent: 'dialog/setComponent'
+  computed: {
+    ...mapGetters({
+      guest: "auth/guest",
+      user: "auth/user",
+      token: "auth/token",
     }),
   },
-  mounted(){
-    this.snackbarStatus=true
-  }
+  methods: {
+    logout() {
+      let config = {
+        method: "post",
+        url: "https://demo-api-vue.sanbercloud.com/api/v2/auth/logout",
+        headers: {
+          Authorization: "Bearer " + this.token,
+        },
+      };
+      this.axios(config)
+        .then(() => {
+          this.setToken("");
+          this.setUser({});
+          this.setAlert({
+            status: true,
+            color: "success",
+            text: "Anda berhasil logout",
+          });
+        })
+        .catch((responses) => {
+         this.setAlert({
+            status: true,
+            color: "error",
+            text: responses.data.error,
+          });
+        });
+     
+    },
+    login() {
+      this.setDialogComponent({ component: "login" });
+      // console.log("login");
+    },
+    ...mapActions({
+      setAlert: "alert/set",
+      setDialogComponent: "dialog/setComponent",
+    }),
+  },
+  mounted() {
+    if (this.token) {
+      this.checkToken(this.token);
+    }
+  },
 };
 </script>
